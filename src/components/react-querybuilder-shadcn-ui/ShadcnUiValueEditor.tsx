@@ -1,19 +1,15 @@
-import type { ValueEditorProps } from "react-querybuilder";
-import { cn } from "@/lib/utils";
-import { Checkbox } from "@/components/ui/checkbox";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
-import { Switch } from "@/components/ui/switch";
-import { Textarea } from "@/components/ui/textarea";
-import {
-  getFirstOption,
-  standardClassnames,
-  useValueEditor,
-} from "react-querybuilder";
+import type { ValueEditorProps } from 'react-querybuilder';
+import { cn } from '@/lib/utils';
+import { Checkbox } from '@/components/ui/checkbox';
+import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
+import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
+import { Switch } from '@/components/ui/switch';
+import { Textarea } from '@/components/ui/textarea';
+import { getFirstOption, standardClassnames, useValueEditor } from 'react-querybuilder';
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export type ShadcnUiValueEditorProps = ValueEditorProps & {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   extraProps?: Record<string, any>;
 };
 
@@ -29,62 +25,49 @@ export const ShadcnUiValueEditor = (allProps: ShadcnUiValueEditorProps) => {
     inputType,
     values = [],
     listsAsArrays,
-    parseNumbers,
     separator,
     valueSource: _vs,
     testID,
     disabled,
-    selectorComponent: SelectorComponent = allProps.schema.controls
-      .valueSelector,
+    selectorComponent: SelectorComponent = allProps.schema.controls.valueSelector,
     extraProps,
     ...props
   } = allProps;
 
-  const { valueAsArray, multiValueHandler } = useValueEditor({
-    handleOnChange,
-    inputType,
-    operator,
-    value,
-    type,
-    listsAsArrays,
-    parseNumbers,
-    values,
-  });
+  const { valueAsArray, multiValueHandler } = useValueEditor(allProps);
 
-  if (operator === "null" || operator === "notNull") {
+  if (operator === 'null' || operator === 'notNull') {
     return null;
   }
 
-  const placeHolderText = fieldData?.placeholder ?? "";
-  const inputTypeCoerced = ["in", "notIn"].includes(operator)
-    ? "text"
-    : inputType || "text";
+  const placeHolderText = fieldData?.placeholder ?? '';
+  const inputTypeCoerced = ['in', 'notIn'].includes(operator) ? 'text' : inputType || 'text';
 
   if (
-    (operator === "between" || operator === "notBetween") &&
-    (type === "select" || type === "text")
+    (operator === 'between' || operator === 'notBetween') &&
+    (type === 'select' || type === 'text')
   ) {
-    const editors = ["from", "to"].map((key, i) => {
-      if (type === "text") {
+    const editors = ['from', 'to'].map((key, i) => {
+      if (type === 'text') {
         return (
           <Input
             key={key}
             type={inputTypeCoerced}
-            value={valueAsArray[i] ?? ""}
+            value={valueAsArray[i] ?? ''}
             disabled={disabled}
             className={standardClassnames.valueListItem}
             placeholder={placeHolderText}
-            onChange={(e) => multiValueHandler(e.target.value, i)}
+            onChange={e => multiValueHandler(e.target.value, i)}
             {...extraProps}
           />
         );
       }
       return (
         <SelectorComponent
-          {...props}
           key={key}
+          {...props}
           className={standardClassnames.valueListItem}
-          handleOnChange={(v) => multiValueHandler(v, i)}
+          handleOnChange={(v: any) => multiValueHandler(v, i)}
           disabled={disabled}
           value={valueAsArray[i] ?? getFirstOption(values)}
           options={values}
@@ -93,11 +76,7 @@ export const ShadcnUiValueEditor = (allProps: ShadcnUiValueEditorProps) => {
       );
     });
     return (
-      <span
-        data-testid={testID}
-        className={cn("flex space-x-2", className)}
-        title={title}
-      >
+      <span data-testid={testID} className={cn('flex space-x-2', className)} title={title}>
         {editors[0]}
         {separator}
         {editors[1]}
@@ -106,7 +85,7 @@ export const ShadcnUiValueEditor = (allProps: ShadcnUiValueEditorProps) => {
   }
 
   switch (type) {
-    case "select":
+    case 'select':
       return (
         <SelectorComponent
           {...props}
@@ -119,7 +98,7 @@ export const ShadcnUiValueEditor = (allProps: ShadcnUiValueEditorProps) => {
         />
       );
 
-    case "multiselect":
+    case 'multiselect':
       return (
         <SelectorComponent
           {...props}
@@ -133,21 +112,21 @@ export const ShadcnUiValueEditor = (allProps: ShadcnUiValueEditorProps) => {
         />
       );
 
-    case "textarea":
+    case 'textarea':
       return (
         <Textarea
           value={value}
           title={title}
           rows={2}
           disabled={disabled}
-          className={cn("min-h-0", className)}
+          className={cn('min-h-0', className)}
           placeholder={placeHolderText}
-          onChange={(e) => handleOnChange(e.target.value)}
+          onChange={e => handleOnChange(e.target.value)}
           {...extraProps}
         />
       );
 
-    case "switch":
+    case 'switch':
       return (
         <Switch
           className={className}
@@ -159,7 +138,7 @@ export const ShadcnUiValueEditor = (allProps: ShadcnUiValueEditorProps) => {
         />
       );
 
-    case "checkbox":
+    case 'checkbox':
       return (
         <Checkbox
           id={props.rule.id}
@@ -172,17 +151,16 @@ export const ShadcnUiValueEditor = (allProps: ShadcnUiValueEditorProps) => {
         />
       );
 
-    case "radio":
+    case 'radio':
       return (
         <RadioGroup
-          className={cn("flex space-x-2 items-center", className)}
+          className={cn('flex space-x-2 items-center', className)}
           title={title}
           value={value}
           onValueChange={handleOnChange}
           disabled={disabled}
-          {...extraProps}
-        >
-          {values.map((v) => (
+          {...extraProps}>
+          {values.map(v => (
             <div key={v.name} className="flex items-center space-x-2">
               <RadioGroupItem value={v.name} id={v.name} />
               <Label htmlFor={v.name}>Default</Label>
@@ -200,10 +178,8 @@ export const ShadcnUiValueEditor = (allProps: ShadcnUiValueEditorProps) => {
       disabled={disabled}
       className={className}
       placeholder={placeHolderText}
-      onChange={(e) => handleOnChange(e.target.value)}
+      onChange={e => handleOnChange(e.target.value)}
       {...extraProps}
     />
   );
 };
-
-ShadcnUiValueEditor.displayName = "ShadcnUiValueEditor";

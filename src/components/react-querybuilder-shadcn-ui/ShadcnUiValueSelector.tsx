@@ -1,13 +1,8 @@
-import type { ComponentPropsWithoutRef } from "react";
-import {
-  Select,
-  SelectContent,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
-import type { VersatileSelectorProps } from "react-querybuilder";
-import { MultiSelect } from "./multiselect";
-import { toSelectOptions } from "./utils";
+import type { ComponentPropsWithoutRef } from 'react';
+import { Select, SelectContent, SelectTrigger, SelectValue } from '@/components/ui/select';
+import type { VersatileSelectorProps } from 'react-querybuilder';
+import { MultiSelect } from './multiselect';
+import { toSelectOptions } from './utils';
 
 export type ShadcnUiValueSelectorProps = VersatileSelectorProps &
   ComponentPropsWithoutRef<typeof Select>;
@@ -37,16 +32,11 @@ export const ShadcnUiValueSelector = ({
   return _multiple ? (
     <MultiSelect
       options={options}
-      value={value}
+      value={value as unknown as string[]}
       onValueChange={handleOnChange}
     />
   ) : (
-    <Select
-      value={value}
-      disabled={disabled}
-      onValueChange={handleOnChange}
-      {...extraProps}
-    >
+    <Select value={value} disabled={disabled} onValueChange={handleOnChange} {...extraProps}>
       <SelectTrigger className="w-[180px]">
         <SelectValue placeholder={title} />
       </SelectTrigger>
@@ -54,5 +44,3 @@ export const ShadcnUiValueSelector = ({
     </Select>
   );
 };
-
-ShadcnUiValueSelector.displayName = "ShadcnUiValueSelector";

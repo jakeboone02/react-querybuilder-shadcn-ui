@@ -1,10 +1,9 @@
-import { Button } from "@/components/ui/button";
-import type { ComponentPropsWithoutRef } from "react";
-import { cn } from "@/lib/utils";
-import type { ActionWithRulesProps } from "react-querybuilder";
+import { Button } from '@/components/ui/button';
+import type { ComponentPropsWithoutRef } from 'react';
+import { cn } from '@/lib/utils';
+import type { ActionWithRulesProps } from 'react-querybuilder';
 
-export type ShadcnUiActionProps = ActionWithRulesProps &
-  ComponentPropsWithoutRef<typeof Button>;
+export type ShadcnUiActionProps = ActionWithRulesProps & ComponentPropsWithoutRef<typeof Button>;
 
 export const ShadcnUiActionElementIcon = ({
   className,
@@ -27,14 +26,11 @@ export const ShadcnUiActionElementIcon = ({
   <Button
     size="icon"
     variant="ghost"
-    className={cn(className, "flex-none")}
+    className={cn(className, 'flex-none')}
     title={disabledTranslation && disabled ? disabledTranslation.title : title}
-    onClick={(e) => handleOnClick(e)}
+    onClick={e => handleOnClick(e)}
     disabled={disabled && !disabledTranslation}
-    {...extraProps}
-  >
+    {...extraProps}>
     {disabledTranslation && disabled ? disabledTranslation.label : label}
   </Button>
 );
-
-ShadcnUiActionElementIcon.displayName = "ShadcnUiActionElementIcon";

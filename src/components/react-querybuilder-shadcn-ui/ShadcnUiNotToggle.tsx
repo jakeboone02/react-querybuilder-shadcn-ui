@@ -1,9 +1,8 @@
-import { Switch } from "@/components/ui/switch";
-import type { ComponentPropsWithoutRef } from "react";
-import type { NotToggleProps } from "react-querybuilder";
+import { Switch } from '@/components/ui/switch';
+import type { ComponentPropsWithoutRef } from 'react';
+import type { NotToggleProps } from 'react-querybuilder';
 
-export type ChakraNotToggleProps = NotToggleProps &
-  ComponentPropsWithoutRef<typeof Switch>;
+export type ChakraNotToggleProps = NotToggleProps & ComponentPropsWithoutRef<typeof Switch>;
 
 export const ShadcnUiNotToggle = ({
   className,
@@ -24,5 +23,3 @@ export const ShadcnUiNotToggle = ({
     </div>
   );
 };
-
-ShadcnUiNotToggle.displayName = "ShadcnUiNotToggle";

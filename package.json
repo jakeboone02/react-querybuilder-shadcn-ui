@@ -7,7 +7,8 @@
     "dev": "vite",
     "build": "tsc && vite build",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "pretty-print": "prettier --write ./src ./public ./*.{html,js,ts,json,md}"
   },
   "dependencies": {
     "@radix-ui/react-checkbox": "^1.0.4",
@@ -17,7 +18,7 @@
     "@radix-ui/react-select": "^2.0.0",
     "@radix-ui/react-slot": "^1.0.2",
     "@radix-ui/react-switch": "^1.0.3",
-    "@react-querybuilder/dnd": "^7.2.0",
+    "@react-querybuilder/dnd": "^8.2.0",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
     "lucide-react": "^0.372.0",
@@ -25,7 +26,7 @@
     "react-dnd": "^16.0.1",
     "react-dnd-html5-backend": "^16.0.1",
     "react-dom": "^18.2.0",
-    "react-querybuilder": "^7.2.0",
+    "react-querybuilder": "^8.2.0",
     "tailwind-merge": "^2.3.0",
     "tailwindcss-animate": "^1.0.7"
   },
@@ -40,6 +41,7 @@
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.6",
     "postcss": "^8.4.38",
+    "prettier": "3.5.0",
     "sass": "^1.75.0",
     "tailwindcss": "^3.4.3",
     "vite": "^5.2.0"

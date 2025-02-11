@@ -1,33 +1,20 @@
-import {
-  X,
-  Copy,
-  Unlock,
-  Lock,
-  ChevronDown,
-  ChevronUp,
-  Plus,
-} from "lucide-react";
-import type {
-  Classnames,
-  Controls,
-  FullField,
-  Translations,
-} from "react-querybuilder";
-import { getCompatContextProvider } from "react-querybuilder";
-import { ShadcnUiActionElement } from "./ShadcnUiActionElement";
-import { ShadcnUiActionElementIcon } from "./ShadcnUiActionElementIcon";
-import { ShadcnUiValueEditor } from "./ShadcnUiValueEditor";
-import { ShadcnUiValueSelector } from "./ShadcnUiValueSelector";
-import { ShadcnUiNotToggle } from "./ShadcnUiNotToggle";
-import { ShadcnUiDragHandle } from "./ShadcnUiDragHandle";
+import { X, Copy, Unlock, Lock, ChevronDown, ChevronUp, Plus } from 'lucide-react';
+import type { Classnames, Controls, FullField, Translations } from 'react-querybuilder';
+import { getCompatContextProvider } from 'react-querybuilder';
+import { ShadcnUiActionElement } from './ShadcnUiActionElement';
+import { ShadcnUiActionElementIcon } from './ShadcnUiActionElementIcon';
+import { ShadcnUiValueEditor } from './ShadcnUiValueEditor';
+import { ShadcnUiValueSelector } from './ShadcnUiValueSelector';
+import { ShadcnUiNotToggle } from './ShadcnUiNotToggle';
+import { ShadcnUiDragHandle } from './ShadcnUiDragHandle';
 
-import "./styles.scss";
+import './styles.scss';
 
-export * from "./ShadcnUiActionElement";
-export * from "./ShadcnUiValueSelector";
+export * from './ShadcnUiActionElement';
+export * from './ShadcnUiValueSelector';
 
 export const shadcnUiControlClassnames = {
-  ruleGroup: "rounded-lg shadow-sm border bg-background",
+  ruleGroup: 'rounded-lg shadow-sm border bg-background',
 } satisfies Partial<Classnames>;
 
 export const shadcnUiControlElements = {
@@ -68,7 +55,6 @@ export const shadcnUiTranslations = {
 } satisfies Partial<Translations>;
 
 export const QueryBuilderShadcnUi = getCompatContextProvider({
-  key: "shadcn/ui",
   controlClassnames: shadcnUiControlClassnames,
   controlElements: shadcnUiControlElements,
   translations: shadcnUiTranslations,
