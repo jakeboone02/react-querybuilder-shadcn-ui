@@ -1,10 +1,11 @@
-import { QueryBuilder } from 'react-querybuilder';
+import { ModeToggle } from '@/components/mode-toggle';
+import { QueryBuilderShadcnUi } from '@/components/react-querybuilder-shadcn-ui';
+import { ThemeProvider } from '@/components/theme-provider';
 import { QueryBuilderDnD } from '@react-querybuilder/dnd';
 import * as ReactDnD from 'react-dnd';
 import * as ReactDndHtml5Backend from 'react-dnd-html5-backend';
-import { ThemeProvider } from '@/components/theme-provider';
-import { QueryBuilderShadcnUi } from '@/components/react-querybuilder-shadcn-ui';
-import { ModeToggle } from '@/components/mode-toggle';
+import type { RuleGroupType } from 'react-querybuilder';
+import { QueryBuilder } from 'react-querybuilder';
 
 const values = [
   { name: 'option1', label: 'Option 1' },
@@ -39,7 +40,8 @@ export const operators = [
   { name: 'in', label: 'in' },
   { name: 'between', label: 'between' },
 ];
-export const defaultQuery = {
+
+export const defaultQuery: RuleGroupType = {
   combinator: 'and',
   rules: [
     { field: 'text', operator: '=', value: '' },

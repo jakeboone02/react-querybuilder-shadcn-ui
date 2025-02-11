@@ -8,7 +8,7 @@ import { ShadcnUiValueSelector } from './ShadcnUiValueSelector';
 import { ShadcnUiNotToggle } from './ShadcnUiNotToggle';
 import { ShadcnUiDragHandle } from './ShadcnUiDragHandle';
 
-import './styles.scss';
+import './styles.css';
 
 export * from './ShadcnUiActionElement';
 export * from './ShadcnUiValueSelector';
